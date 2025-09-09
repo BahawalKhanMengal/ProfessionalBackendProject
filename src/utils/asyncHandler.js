@@ -1,6 +1,6 @@
 // these are utility functions to support the other functions and reduces code duplicasi
 const asyncHandler = (requestHandler) => {
-    (req,res,next)=>{
+    return (req,res,next)=>{
         Promise.resolve(requestHandler(req,res,next)).catch((err)=>next(err));
     }
 }

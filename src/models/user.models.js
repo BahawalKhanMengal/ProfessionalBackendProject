@@ -52,7 +52,7 @@ const userSchema = new Schema(
 userSchema.pre("save",async function (next) {
     // here we are checking negativly that if the password is not modified then retrun from if line statement which is written in shortcut without one {} brackets because it ending in one line. if the password is modifed then run line below if statement
     if(!this.isModified("password")) return next()
-    this.password = bcrypt.hash(this.password,10)
+    this.password =await bcrypt.hash(this.password,10)
     next()
 })
 // if the bcrypt can do hashing than also it can compare passwords like user just register once and the password is hashed than how user knows the hashed password user just write password than the whole work done by bcrypt to compare user write password and hashed password to return true or false 
